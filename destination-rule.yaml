@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: website
+  namespace: website-istio-ns
+spec:
+  host: website
+  subsets:
+  - name: version-1
+    labels:
+      version: website-version-1
+  - name: version-2
+    labels:
+      version: website-version-2

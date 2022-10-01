@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-v1
+  namespace: website-istio-ns
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: website
+      version: website-version-1
+  template:
+    metadata:
+      labels:
+        app: website
+        version: website-version-1
+    spec:
+      containers:
+      - name: website-version-1
+        image: hashicorp/http-echo:alpine
+        args:
+          - -listen=:80
+          - --text="echo-v1"
+        ports:
+          - name: http
+            protocol: TCP
+            containerPort: 80
+        imagePullPolicy: IfNotPresent

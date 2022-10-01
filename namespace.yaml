@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: website-istio-ns
+  labels:
+    name: website-istio-ns
+    istio-injection: enabled
